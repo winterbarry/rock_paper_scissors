@@ -6,13 +6,44 @@
     <title>Document</title>
     <script>
         function getChoice() {
-            let choices = ['Rock', 'Paper', 'Scissors']
+            let choices = ['rock', 'paper', 'scissors']
             let randomChoice = Math.floor(Math.random() * choices.length);
             return choices[randomChoice];
         }
 
-        let computersChoice = getChoice();
-        console.log('Computer chose:', computersChoice);
+        function playRound(playerSelection, computerSelection) {
+            //git commit this*
+
+            function inputConverted(playerSelection) { // Convert playerSelection to lowercase
+                return playerSelection.toLowerCase(); 
+            }
+
+            lowerCase = inputConverted(playerSelection); 
+
+            // conditions if the player wins or ties
+            if (lowerCase == 'rock' && computerSelection == 'scissors') {
+                return 'You Win! Rock beats Scissors';
+            } else if (lowerCase == 'paper' && computerSelection == 'rock') {
+                return 'You Win! Paper beats Rock';
+            } else if (lowerCase == 'scissors' && computerSelection == 'paper') {
+                return 'You Win! Scissors beats Paper';
+            } else if (lowerCase === computerSelection) {
+                return "It's a tie!"
+            } else {
+                if (computerSelection == 'rock' && lowerCase == 'scissors') {
+                    return 'You Lose! Rock beats Scissors'
+                } else if (computerSelection == 'paper' && lowerCase == 'rock') {
+                    return 'You Lose! Paper beats Rock' 
+                } else if (computerSelection == 'scissors' && lowerCase == 'paper') {
+                    return 'You Lose! Scissors beats Paper'
+                }
+            }
+        }
+
+        const playerSelection = prompt('Please select a value:');
+        const computerSelection = getChoice();
+        const results = playRound(playerSelection, computerSelection);
+        console.log(results)
     </script>
 </head>
 <body>
